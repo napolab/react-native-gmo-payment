@@ -1,6 +1,6 @@
 {
   "name": "@napolab/react-native-gmo-payment",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Library for using Multipayment in react-native",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
