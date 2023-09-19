@@ -6,19 +6,28 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "lint": "npm-run-all -p lint:*",
+    "lint:prettier": "prettier --check .",
+    "lint:eslint": "eslint --ext .ts,.tsx .",
+    "fmt": "npm-run-all -s fmt:*",
+    "fmt:prettier": "prettier --write .",
+    "fmt:eslint": "eslint --ext .ts,.tsx --fix ."
   },
   "dependencies": {
+    "@napolab/react-native-gmo-payment": "*",
     "expo": "~49.0.11",
     "expo-status-bar": "~1.6.0",
     "react": "18.2.0",
     "react-native": "0.72.4",
-    "@napolab/react-native-gmo-payment": "*",
     "react-native-webview": "^13.6.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@naporin0624/eslint-config": "^0.13.1",
     "@types/react": "~18.2.14",
+    "eslint": "^8.49.0",
+    "prettier": "^3.0.3",
     "typescript": "^5.1.3"
   },
   "private": true

@@ -6,11 +6,11 @@ import {
 import { type FC, useCallback } from "react";
 import { Alert, Button, View } from "react-native";
 
-export default function App() {
+const App = () => {
   return (
     <GMOMultipaymentProvider
       env="staging"
-      shopId=""
+      shopId="your-shop-id"
       onReady={() => {
         // eslint-disable-next-line no-console
         console.log(getMultiPaymentConfig());
@@ -19,7 +19,8 @@ export default function App() {
       <Screen />
     </GMOMultipaymentProvider>
   );
-}
+};
+export default App;
 
 const Screen: FC = () => {
   const handlePress = useCallback(async () => {
