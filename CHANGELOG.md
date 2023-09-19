@@ -1,5 +1,11 @@
 # react-native-gmo-payment
 
+## 0.1.3
+
+### Patch Changes
+
+- a944261: fix useCallback deps
+
 ## 0.1.2
 
 ### Patch Changes
