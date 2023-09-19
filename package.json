@@ -30,7 +30,7 @@
     "fmt:prettier": "prettier --write .",
     "fmt:eslint": "eslint --ext .ts,.tsx --fix .",
     "test": "vitest",
-    "publish": "changeset publish"
+    "release": "changeset publish"
   },
   "keywords": [
     "react-native",
