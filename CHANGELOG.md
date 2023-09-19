@@ -1,5 +1,11 @@
 # react-native-gmo-payment
 
+## 0.1.2
+
+### Patch Changes
+
+- c90227e: update package.json script name
+
 ## 0.1.1
 
 ### Patch Changes
