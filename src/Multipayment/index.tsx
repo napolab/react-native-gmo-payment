@@ -95,7 +95,7 @@ const GMOMultipaymentProvider: FC<GMOMultipaymentProviderProps> = ({ children, e
         }
       }
     },
-    [handleQueue, init, getToken],
+    [init, getToken, onReady, handleQueue],
   );
 
   return (
