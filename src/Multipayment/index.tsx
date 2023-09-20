@@ -1,4 +1,3 @@
-import stringify from "fast-json-stable-stringify";
 import React, { useCallback, useMemo, useRef } from "react";
 import { StyleSheet, View } from "react-native";
 import { WebView } from "react-native-webview";
@@ -23,6 +22,8 @@ export type GMOMultipaymentProviderProps = {
   children: React.ReactNode;
   onReady?: () => void;
 };
+
+let count = 0;
 const GMOMultipaymentProvider: FC<GMOMultipaymentProviderProps> = ({ children, env, shopId, onReady }) => {
   const ref = useRef<WebView>(null);
   const html = `<script src="${script(env)}"></script>`;
@@ -45,13 +46,13 @@ const GMOMultipaymentProvider: FC<GMOMultipaymentProviderProps> = ({ children, e
     queue.current.delete(key);
   }, []);
   const getToken: Multipayment["getToken"] = useCallback((payment, callback) => {
-    const key = stringify(payment);
+    const key = `key__${++count}`;
     queue.current.set(key, callback);
 
     ref.current?.injectJavaScript(`
       {
         const sdk = window.Multipayment || Multipayment
-        sdk.getToken(JSON.parse('${key}'), result => {
+        sdk.getToken(JSON.parse('${JSON.stringify(payment)}'), result => {
           window.ReactNativeWebView.postMessage(JSON.stringify({ type: 'getToken', payload: { key: '${key}', result } }))
         })
       }
@@ -107,6 +108,7 @@ const GMOMultipaymentProvider: FC<GMOMultipaymentProviderProps> = ({ children, e
           ref={ref}
           injectedJavaScript={injected}
           onMessage={handleMessage}
+          key={`${env}:${shopId}`}
         />
       </View>
       {children}
