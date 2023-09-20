@@ -15,13 +15,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version-file: "package.json"
-
-      - name: Install Dependencies
-        run: npm ci
+      - uses: ./.github/workflows/modules/setup-node
 
       - name: Build
         run: npm run build
