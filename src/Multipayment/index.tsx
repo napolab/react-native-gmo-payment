@@ -12,7 +12,7 @@ import {
 } from "./client";
 import { script } from "./externals";
 
-import type { Multipayment } from "./client";
+import type { Multipayment, watchClientState } from "./client";
 import type { FC } from "react";
 import type { WebViewMessageEvent } from "react-native-webview";
 
@@ -116,7 +116,6 @@ const GMOMultipaymentProvider: FC<GMOMultipaymentProviderProps> = ({ children, e
   );
 };
 
-export { GMOMultipaymentProvider, initMultiPayment, getClientState, getMultiPaymentToken, getMultiPaymentConfig };
 const styles = StyleSheet.create({
   visibilityHidden: {
     position: "absolute",
@@ -127,3 +126,12 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
 });
+
+export {
+  GMOMultipaymentProvider,
+  initMultiPayment,
+  getClientState,
+  getMultiPaymentToken,
+  getMultiPaymentConfig,
+  watchClientState,
+};

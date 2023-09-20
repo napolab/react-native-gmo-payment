@@ -60,11 +60,20 @@ async function fetchPaymentToken() {
 }
 ```
 
-### 3. 他のユーティリティ関数
+### 3. クライアント状態の監視
 
-- `getClientState`: GMO Multipayment クライアントの現在の状態を取得します。
-- `getMultiPaymentConfig`: 現在の Multipayment API の設定を取得します。
-- `initMultiPayment`: ショップIDを使用して Multipayment API を初期化します。
+新しい `watchClientState` 関数を使用して GMO Multipayment クライアントの状態を監視できます。この関数はコールバック関数を受け取り、クライアントの状態が変更されるたびに呼び出されます。
+
+```jsx
+import { watchClientState } from "react-native-gmo-multipayment";
+
+const subscription = watchClientState((state) => {
+  console.log("Client state:", state);
+});
+
+// サブスクリプションを後で解除する場合
+subscription.unsubscribe();
+```
 
 ## API ドキュメント
 
@@ -75,8 +84,19 @@ async function fetchPaymentToken() {
 - `PaymentResult`: ペイメントトークン取得の結果を表すオブジェクトです。
 - `Payment`: カード情報とトークン取得数を含むオブジェクトです。
 - `MultipaymentConfig`: Multipayment API の設定を表すオブジェクトです。
-- `State`: クライアントの現在の状態を表します。
+- `State`: クライアントの現在の状態を表します。この型は "loading" または "ready" のいずれかの値を取ります。
 - `GMOMultipaymentProviderProps`: `GMOMultipaymentProvider` コンポーネントのプロパティを表します。
+
+### Functions
+
+- `getClientState`: GMO Multipayment クライアントの現在の状態を取得します。この関数は非同期であり、状態を表
+
+す文字列を返します。
+
+- `getMultiPaymentConfig`: 現在の Multipayment API の設定を取得します。
+- `getMultiPaymentToken`: カード情報を使用してペイメントトークンを取得します。
+- `initMultiPayment`: ショップIDを使用して Multipayment API を初期化します。
+- `watchClientState`: クライアントの状態変更を監視する関数です。状態が変更されるたびにコールバック関数が呼び出されます。
 
 詳細な型情報については、ソースコードを参照してください。
 
