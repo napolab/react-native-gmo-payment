@@ -1,5 +1,11 @@
 # react-native-gmo-payment
 
+## 0.1.4
+
+### Patch Changes
+
+- 2a8390d: Generate unique keys for the issued action and onMessage payload.
+
 ## 0.1.3
 
 ### Patch Changes
