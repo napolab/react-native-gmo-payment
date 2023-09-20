@@ -1,23 +1,32 @@
+import { makeSubject, pipe, subscribe, toPromise } from "wonka";
+
 import type { Multipayment, MultipaymentConfig, Payment, PaymentResult } from "./types";
+import type { Subscription } from "wonka";
 
 export type { Multipayment };
 
 type State = "loading" | "ready";
 let client: Multipayment | undefined;
-let state: State = "loading";
+const state = makeSubject<State>();
 let config: MultipaymentConfig | undefined;
 
 export const initializeApp = (init: { client: Multipayment; config: MultipaymentConfig }) => {
   client = init.client;
   config = init.config;
 };
+
 export const updateState = (newState: State) => {
-  state = newState;
+  state.next(newState);
 };
 
-export const getClientState = (): State => {
-  return state;
+export const watchClientState = (callback: (state: State) => void): Subscription => {
+  return pipe(state.source, subscribe(callback));
 };
+
+export const getClientState = (): Promise<State> => {
+  return toPromise(state.source);
+};
+
 export const getMultiPaymentConfig = (): MultipaymentConfig => {
   if (config !== undefined) {
     return config;
@@ -25,6 +34,7 @@ export const getMultiPaymentConfig = (): MultipaymentConfig => {
     throw new Error("Multipayment is not initialized");
   }
 };
+
 export const getMultiPaymentToken = async (payment: Payment): Promise<PaymentResult> => {
   return new Promise<PaymentResult>((resolve, reject) => {
     if (client !== undefined) {
@@ -35,7 +45,7 @@ export const getMultiPaymentToken = async (payment: Payment): Promise<PaymentRes
   });
 };
 
-export const initMultiPayment = (shopId: string) => {
+export const initMultiPayment = (shopId: string): void => {
   if (client !== undefined) {
     client.init(shopId);
   } else {

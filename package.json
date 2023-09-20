@@ -69,5 +69,8 @@
   "volta": {
     "node": "18.18.0",
     "npm": "10.1.0"
+  },
+  "dependencies": {
+    "wonka": "^6.3.4"
   }
 }
