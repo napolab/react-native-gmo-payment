@@ -1,5 +1,11 @@
 # react-native-gmo-payment
 
+## 0.2.0
+
+### Minor Changes
+
+- d5efbda: add state subscribe module
+
 ## 0.1.4
 
 ### Patch Changes
