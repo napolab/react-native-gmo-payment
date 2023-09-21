@@ -1,5 +1,5 @@
 {
-  "name": "@napolab/react-native-gmo-payment",
+  "name": "react-native-gmo-payment",
   "version": "0.2.0",
   "description": "Library for using Multipayment in react-native",
   "main": "./dist/index.js",
