@@ -5,10 +5,9 @@
 ## インストール
 
 ```bash
-# 使用しているパッケージマネージャーに応じて以下のコマンドのいずれかを実行します
-npm install react-native-gmo-multipayment
+npm install react-native-gmo-payment
 # または
-yarn add react-native-gmo-multipayment
+yarn add react-native-gmo-payment
 ```
 
 ## 使い方
@@ -18,7 +17,7 @@ yarn add react-native-gmo-multipayment
 アプリケーションのルートコンポーネントで `GMOMultipaymentProvider` を設定します。このプロバイダーは、GMO Multipayment の環境設定とショップIDを受け取ります。
 
 ```jsx
-import { GMOMultipaymentProvider } from "react-native-gmo-multipayment";
+import { GMOMultipaymentProvider } from "react-native-gmo-payment";
 
 function App() {
   return (
@@ -40,7 +39,7 @@ export default App;
 `getMultiPaymentToken` 関数を使用してペイメントトークンを取得します。この関数は、カード情報とトークンの取得数をパラメータとして受け取ります。
 
 ```jsx
-import { getMultiPaymentToken } from "react-native-gmo-multipayment";
+import { getMultiPaymentToken } from "react-native-gmo-payment";
 
 async function fetchPaymentToken() {
   try {
@@ -65,7 +64,7 @@ async function fetchPaymentToken() {
 新しい `watchClientState` 関数を使用して GMO Multipayment クライアントの状態を監視できます。この関数はコールバック関数を受け取り、クライアントの状態が変更されるたびに呼び出されます。
 
 ```jsx
-import { watchClientState } from "react-native-gmo-multipayment";
+import { watchClientState } from "react-native-gmo-payment";
 
 const subscription = watchClientState((state) => {
   console.log("Client state:", state);
