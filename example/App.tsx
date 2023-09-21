@@ -2,7 +2,7 @@ import {
   GMOMultipaymentProvider,
   getMultiPaymentConfig,
   getMultiPaymentToken,
-} from "@napolab/react-native-gmo-payment";
+} from "react-native-gmo-payment";
 import { type FC, useCallback } from "react";
 import { Alert, Button, View } from "react-native";
 
