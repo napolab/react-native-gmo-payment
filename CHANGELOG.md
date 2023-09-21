@@ -1,5 +1,11 @@
 # react-native-gmo-payment
 
+## 0.3.1
+
+### Patch Changes
+
+- bf71eda: update doc and example package name
+
 ## 0.3.0
 
 ### Minor Changes
