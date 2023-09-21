@@ -5,10 +5,9 @@
 ## インストール
 
 ```bash
-# 使用しているパッケージマネージャーに応じて以下のコマンドのいずれかを実行します
-npm install react-native-gmo-multipayment
+npm install react-native-gmo-payment
 # または
-yarn add react-native-gmo-multipayment
+yarn add react-native-gmo-payment
 ```
 
 ## 使い方
