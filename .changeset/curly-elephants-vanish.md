@@ -1,5 +1,5 @@
 ---
-"react-native-gmo-payment": patch
+"react-native-gmo-payment": minor
 ---
 
 remove namespace
