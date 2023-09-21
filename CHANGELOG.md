@@ -1,5 +1,11 @@
 # react-native-gmo-payment
 
+## 0.3.0
+
+### Minor Changes
+
+- a79b7d1: remove namespace
+
 ## 0.2.0
 
 ### Minor Changes
