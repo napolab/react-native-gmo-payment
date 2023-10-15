@@ -23,7 +23,7 @@ export type GMOMultipaymentBridgeProps = {
 };
 
 let count = 0;
-const GMOMultipaymentBride: FC<GMOMultipaymentBridgeProps> = ({ env, shopId, onReady }) => {
+const GMOMultipaymentBridge: FC<GMOMultipaymentBridgeProps> = ({ env, shopId, onReady }) => {
   const ref = useRef<WebView>(null);
   const html = `<script src="${script(env)}"></script>`;
   const source = useMemo(() => ({ html }), [html]);
@@ -124,7 +124,7 @@ const styles = StyleSheet.create({
 });
 
 export {
-  GMOMultipaymentBride,
+  GMOMultipaymentBridge,
   initMultiPayment,
   getClientState,
   getMultiPaymentToken,
