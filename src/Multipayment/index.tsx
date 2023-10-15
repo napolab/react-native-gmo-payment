@@ -16,15 +16,14 @@ import type { Multipayment, watchClientState } from "./client";
 import type { FC } from "react";
 import type { WebViewMessageEvent } from "react-native-webview";
 
-export type GMOMultipaymentProviderProps = {
+export type GMOMultipaymentBridgeProps = {
   env: "production" | "staging";
   shopId: string;
-  children: React.ReactNode;
   onReady?: () => void;
 };
 
 let count = 0;
-const GMOMultipaymentProvider: FC<GMOMultipaymentProviderProps> = ({ children, env, shopId, onReady }) => {
+const GMOMultipaymentBridge: FC<GMOMultipaymentBridgeProps> = ({ env, shopId, onReady }) => {
   const ref = useRef<WebView>(null);
   const html = `<script src="${script(env)}"></script>`;
   const source = useMemo(() => ({ html }), [html]);
@@ -100,19 +99,16 @@ const GMOMultipaymentProvider: FC<GMOMultipaymentProviderProps> = ({ children, e
   );
 
   return (
-    <>
-      <View accessible accessibilityElementsHidden aria-hidden style={styles.visibilityHidden}>
-        <WebView
-          source={source}
-          originWhitelist={["*"]}
-          ref={ref}
-          injectedJavaScript={injected}
-          onMessage={handleMessage}
-          key={`${env}:${shopId}`}
-        />
-      </View>
-      {children}
-    </>
+    <View accessible accessibilityElementsHidden aria-hidden style={styles.visibilityHidden}>
+      <WebView
+        source={source}
+        originWhitelist={["*"]}
+        ref={ref}
+        injectedJavaScript={injected}
+        onMessage={handleMessage}
+        key={`${env}:${shopId}`}
+      />
+    </View>
   );
 };
 
@@ -128,7 +124,7 @@ const styles = StyleSheet.create({
 });
 
 export {
-  GMOMultipaymentProvider,
+  GMOMultipaymentBridge,
   initMultiPayment,
   getClientState,
   getMultiPaymentToken,

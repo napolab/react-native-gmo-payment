@@ -1,23 +1,20 @@
-import {
-  GMOMultipaymentProvider,
-  getMultiPaymentConfig,
-  getMultiPaymentToken,
-} from "react-native-gmo-payment";
 import { type FC, useCallback } from "react";
 import { Alert, Button, View } from "react-native";
+import { GMOMultipaymentBridge, getMultiPaymentConfig, getMultiPaymentToken } from "react-native-gmo-payment";
 
 const App = () => {
   return (
-    <GMOMultipaymentProvider
-      env="staging"
-      shopId="your-shop-id"
-      onReady={() => {
-        // eslint-disable-next-line no-console
-        console.log(getMultiPaymentConfig());
-      }}
-    >
+    <>
+      <GMOMultipaymentBridge
+        env="staging"
+        shopId="your-shop-id"
+        onReady={() => {
+          // eslint-disable-next-line no-console
+          console.log(getMultiPaymentConfig());
+        }}
+      />
       <Screen />
-    </GMOMultipaymentProvider>
+    </>
   );
 };
 export default App;
