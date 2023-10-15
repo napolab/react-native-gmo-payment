@@ -1,5 +1,11 @@
 # react-native-gmo-payment
 
+## 0.3.2
+
+### Patch Changes
+
+- 9a3dee9: fix wrong typing
+
 ## 0.3.1
 
 ### Patch Changes
