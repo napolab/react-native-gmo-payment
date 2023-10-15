@@ -41,8 +41,8 @@ type PaymentTokenObject = {
   toBeExpiredAt: string;
   /** セキュリティーコードありなし */
   isSecurityCodeSet: boolean;
-  /** 発行したトークン配列 */
-  token: string[];
+  /** 発行したトークン */
+  token: string;
 };
 
 export type PaymentResult = {
